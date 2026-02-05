@@ -25,9 +25,30 @@ struct MessageListView: View {
         Message(text: "Working on a new SwiftUI project", isMe: true)
     ]
     
+    @GestureState private var dragTranslation: CGFloat = 0
+    @State private var isInteractiveTransitionActive = false
+    @State private var transitionStartOffset: CGFloat = 0
+    @State private var activeSwipeMessageId: UUID?
+    
     var onSwipeBegan: ((Message) -> Void)?
     var onSwipeChanged: ((Message, CGFloat) -> Void)?
     var onSwipeEnded: ((Message, Bool) -> Void)?
+    
+    private let bubbleMaxOffset: CGFloat = 0
+    private let velocityThreshold: CGFloat = 500
+    private let distanceThresholdRatio: CGFloat = 0.3
+    private let gestureMinDistance: CGFloat = 5
+    
+    private var bubbleOffset: CGFloat {
+        return max(dragTranslation, -bubbleMaxOffset)
+    }
+    
+    private var listOffset: CGFloat {
+        if abs(dragTranslation) > bubbleMaxOffset {
+            return dragTranslation + bubbleMaxOffset
+        }
+        return 0
+    }
     
     var body: some View {
         VStack(spacing: 0) {
@@ -46,16 +67,55 @@ struct MessageListView: View {
                         ForEach(messages) { message in
                             MessageBubbleView(
                                 message: message,
-                                screenWidth: geometry.size.width,
-                                onSwipeBegan: {
-                                    onSwipeBegan?(message)
-                                },
-                                onSwipeChanged: { percentage in
-                                    onSwipeChanged?(message, percentage)
-                                },
-                                onSwipeEnded: { shouldComplete in
-                                    onSwipeEnded?(message, shouldComplete)
-                                }
+                                bubbleOffset: activeSwipeMessageId == message.id ? bubbleOffset : 0
+                            )
+                            .gesture(
+                                message.isMe ? DragGesture(minimumDistance: gestureMinDistance, coordinateSpace: .global)
+                                    .updating($dragTranslation) { value, state, _ in
+                                        let translation = value.translation.width
+                                        if translation <= 0 {
+                                            state = translation
+                                        }
+                                    }
+                                    .onChanged { value in
+                                        let translation = value.translation.width
+                                        if translation > 0 { return }
+                                        
+                                        if activeSwipeMessageId == nil {
+                                            activeSwipeMessageId = message.id
+                                        }
+                                        
+                                        guard activeSwipeMessageId == message.id else { return }
+                                        
+                                        // Only start the push transition after bubble reaches its max
+                                        if !isInteractiveTransitionActive && abs(translation) > bubbleMaxOffset {
+                                            isInteractiveTransitionActive = true
+                                            transitionStartOffset = abs(translation)
+                                            onSwipeBegan?(message)
+                                        }
+                                        
+                                        if isInteractiveTransitionActive {
+                                            let progressSinceStart = max(0, abs(translation) - transitionStartOffset)
+                                            let remainingDistance = geometry.size.width - transitionStartOffset
+                                            let percentage = min(progressSinceStart / remainingDistance, 1.0)
+                                            onSwipeChanged?(message, percentage)
+                                        }
+                                    }
+                                    .onEnded { value in
+                                        guard activeSwipeMessageId == message.id else { return }
+                                        
+                                        let translation = value.translation.width
+                                        let velocity = value.predictedEndTranslation.width - translation
+                                        let distanceThreshold = geometry.size.width * distanceThresholdRatio
+                                        let shouldComplete = isInteractiveTransitionActive &&
+                                        ((abs(translation) > distanceThreshold) || (abs(velocity) > velocityThreshold && velocity < 0))
+                                        
+                                        onSwipeEnded?(message, shouldComplete)
+                                        
+                                        isInteractiveTransitionActive = false
+                                        transitionStartOffset = 0
+                                        activeSwipeMessageId = nil
+                                    } : nil
                             )
                         }
                     }
@@ -63,6 +123,7 @@ struct MessageListView: View {
                 }
             }
         }
+        .offset(x: listOffset)
     }
 }
 

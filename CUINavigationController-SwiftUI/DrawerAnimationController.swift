@@ -56,7 +56,6 @@ class DrawerAnimationController: NSObject, UIViewControllerAnimatedTransitioning
             
             animator.addAnimations {
                 toView.transform = .identity
-                fromView.transform = CGAffineTransform(translationX: -parallaxDistance, y: 0)
             }
             
             animator.addCompletion { position in
