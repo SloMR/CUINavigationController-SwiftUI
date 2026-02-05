@@ -29,6 +29,8 @@ struct MessageBubbleView: View {
                 .background(message.isMe ? Color.blue : Color.gray)
                 .foregroundColor(.white)
                 .cornerRadius(20)
+                .lineLimit(nil)
+                .fixedSize(horizontal: false, vertical: true)
                 .offset(x: offset)
                 .gesture(
                     message.isMe ? DragGesture()
