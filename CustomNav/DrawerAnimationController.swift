@@ -8,6 +8,8 @@
 import Foundation
 import UIKit
 
+// MARK: -
+
 class DrawerAnimationController: NSObject, UIViewControllerAnimatedTransitioning {
     let operation: UINavigationController.Operation
     private var propertyAnimator: UIViewPropertyAnimator?

@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// MARK: -
+
 struct MessageDetailView: View {
     let message: Message
     
@@ -51,6 +53,7 @@ struct MessageDetailView: View {
     }
 }
 
+// MARK: -
 class MessageDetailHostingController: UIHostingController<MessageDetailView> {
     var currentSwipeTransition: UIPercentDrivenInteractiveTransition?
     
@@ -129,6 +132,8 @@ class MessageDetailHostingController: UIHostingController<MessageDetailView> {
     }
 }
 
+// MARK: -
+
 extension MessageDetailHostingController: UIGestureRecognizerDelegate {
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         if let pan = gestureRecognizer as? UIPanGestureRecognizer {
@@ -138,6 +143,8 @@ extension MessageDetailHostingController: UIGestureRecognizerDelegate {
         return true
     }
 }
+
+// MARK: -
 
 #Preview {
     NavigationStack {

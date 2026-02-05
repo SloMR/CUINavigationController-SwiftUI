@@ -7,11 +7,15 @@
 
 import SwiftUI
 
+// MARK: -
+
 struct Message: Identifiable {
     let id = UUID()
     let text: String
     let isMe: Bool
 }
+
+// MARK: -
 
 struct MessageListView: View {
     let messages = [
@@ -61,6 +65,8 @@ struct MessageListView: View {
         }
     }
 }
+
+// MARK: -
 
 class MessageListHostingController: UIHostingController<MessageListView> {
     var activePushTransition: UIPercentDrivenInteractiveTransition?
@@ -128,6 +134,8 @@ class MessageListHostingController: UIHostingController<MessageListView> {
         }
     }
 }
+
+// MARK: -
 
 #Preview {
     MessageListView()

@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// MARK: -
+
 struct MessageBubbleView: View {
     let message: Message
     let screenWidth: CGFloat
@@ -86,6 +88,8 @@ struct MessageBubbleView: View {
         }
     }
 }
+
+// MARK: -
 
 #Preview {
     GeometryReader { geometry in

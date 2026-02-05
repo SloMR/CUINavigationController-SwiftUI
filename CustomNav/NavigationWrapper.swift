@@ -55,6 +55,8 @@ struct NavigationBridge: UIViewControllerRepresentable {
     func updateUIViewController(_ uiViewController: UINavigationController, context: Context) {}
 }
 
+// MARK: -
+
 #Preview {
     NavigationBridge()
 }
