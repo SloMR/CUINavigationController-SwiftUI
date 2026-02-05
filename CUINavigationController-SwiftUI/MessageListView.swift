@@ -34,20 +34,13 @@ struct MessageListView: View {
     var onSwipeChanged: ((Message, CGFloat) -> Void)?
     var onSwipeEnded: ((Message, Bool) -> Void)?
     
-    private let bubbleMaxOffset: CGFloat = 0
+    private let bubbleMaxOffset: CGFloat = 25
     private let velocityThreshold: CGFloat = 500
     private let distanceThresholdRatio: CGFloat = 0.3
     private let gestureMinDistance: CGFloat = 5
     
     private var bubbleOffset: CGFloat {
         return max(dragTranslation, -bubbleMaxOffset)
-    }
-    
-    private var listOffset: CGFloat {
-        if abs(dragTranslation) > bubbleMaxOffset {
-            return dragTranslation + bubbleMaxOffset
-        }
-        return 0
     }
     
     var body: some View {
@@ -123,7 +116,6 @@ struct MessageListView: View {
                 }
             }
         }
-        .offset(x: listOffset)
     }
 }
 

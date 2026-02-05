@@ -33,16 +33,16 @@ class DrawerAnimationController: NSObject, UIViewControllerAnimatedTransitioning
         
         let container = transitionContext.containerView
         let isPushing = operation == .push
-        let parallaxDistance = fromView.bounds.width / 50
         
         if isPushing {
-            fromView.frame = container.bounds
             toView.frame = container.bounds
-            toView.transform = CGAffineTransform(translationX: container.bounds.width, y: 0)
+            toView.transform = .identity
+            
+            fromView.frame = container.bounds
             fromView.transform = .identity
             
-            container.addSubview(fromView)
             container.addSubview(toView)
+            container.addSubview(fromView)      
             
             let timingParameters: UITimingCurveProvider = transitionContext.isInteractive
             ? UICubicTimingParameters(animationCurve: .linear)
@@ -55,11 +55,15 @@ class DrawerAnimationController: NSObject, UIViewControllerAnimatedTransitioning
             animator.scrubsLinearly = false
             
             animator.addAnimations {
-                toView.transform = .identity
+                fromView.transform = CGAffineTransform(translationX: -container.bounds.width, y: 0)
             }
             
             animator.addCompletion { position in
                 fromView.transform = .identity
+                
+                if transitionContext.transitionWasCancelled {
+                    toView.removeFromSuperview()
+                }
                 
                 let completed = (position == .end)
                 transitionContext.completeTransition(completed && !transitionContext.transitionWasCancelled)
@@ -76,12 +80,13 @@ class DrawerAnimationController: NSObject, UIViewControllerAnimatedTransitioning
             
         } else {
             toView.frame = container.bounds
+            toView.transform = CGAffineTransform(translationX: -container.bounds.width, y: 0)
+            
             fromView.frame = container.bounds
-            toView.transform = CGAffineTransform(translationX: -parallaxDistance, y: 0)
             fromView.transform = .identity
             
-            container.addSubview(toView)
             container.addSubview(fromView)
+            container.addSubview(toView)
             
             let animator = UIViewPropertyAnimator(
                 duration: transitionDuration(using: transitionContext),
@@ -90,7 +95,6 @@ class DrawerAnimationController: NSObject, UIViewControllerAnimatedTransitioning
             animator.scrubsLinearly = false
             
             animator.addAnimations {
-                fromView.transform = CGAffineTransform(translationX: container.bounds.width, y: 0)
                 toView.transform = .identity
             }
             
