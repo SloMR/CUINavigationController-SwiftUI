@@ -1,6 +1,6 @@
 //
 //  CustomNavApp.swift
-//  CustomNav
+//  CUINavigationController-SwiftUI
 //
 //  Created by Sulaiman Alromaih on 04/02/2026.
 //

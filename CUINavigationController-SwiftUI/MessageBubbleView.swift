@@ -1,6 +1,6 @@
 //
 //  MessageBubbleView.swift
-//  CustomNav
+//  CUINavigationController-SwiftUI
 //
 //  Created by Sulaiman Alromaih on 05/02/2026.
 //

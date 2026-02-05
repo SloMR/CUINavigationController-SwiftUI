@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		4C259AB92F33AD0100B3E57A /* CustomNav.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CustomNav.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C259AB92F33AD0100B3E57A /* CUINavigationController-SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CUINavigationController-SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		4C259ABB2F33AD0100B3E57A /* CustomNav */ = {
+		4C259ABB2F33AD0100B3E57A /* CUINavigationController-SwiftUI */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = CustomNav;
+			path = "CUINavigationController-SwiftUI";
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -32,7 +32,7 @@
 		4C259AB02F33AD0100B3E57A = {
 			isa = PBXGroup;
 			children = (
-				4C259ABB2F33AD0100B3E57A /* CustomNav */,
+				4C259ABB2F33AD0100B3E57A /* CUINavigationController-SwiftUI */,
 				4C259ABA2F33AD0100B3E57A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -40,7 +40,7 @@
 		4C259ABA2F33AD0100B3E57A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4C259AB92F33AD0100B3E57A /* CustomNav.app */,
+				4C259AB92F33AD0100B3E57A /* CUINavigationController-SwiftUI.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -48,9 +48,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4C259AB82F33AD0100B3E57A /* CustomNav */ = {
+		4C259AB82F33AD0100B3E57A /* CUINavigationController-SwiftUI */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4C259AC42F33AD0300B3E57A /* Build configuration list for PBXNativeTarget "CustomNav" */;
+			buildConfigurationList = 4C259AC42F33AD0300B3E57A /* Build configuration list for PBXNativeTarget "CUINavigationController-SwiftUI" */;
 			buildPhases = (
 				4C259AB52F33AD0100B3E57A /* Sources */,
 				4C259AB62F33AD0100B3E57A /* Frameworks */,
@@ -61,13 +61,13 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				4C259ABB2F33AD0100B3E57A /* CustomNav */,
+				4C259ABB2F33AD0100B3E57A /* CUINavigationController-SwiftUI */,
 			);
-			name = CustomNav;
+			name = "CUINavigationController-SwiftUI";
 			packageProductDependencies = (
 			);
-			productName = CustomNav;
-			productReference = 4C259AB92F33AD0100B3E57A /* CustomNav.app */;
+			productName = "CUINavigationController-SwiftUI";
+			productReference = 4C259AB92F33AD0100B3E57A /* CUINavigationController-SwiftUI.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -99,7 +99,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4C259AB82F33AD0100B3E57A /* CustomNav */,
+				4C259AB82F33AD0100B3E57A /* CUINavigationController-SwiftUI */,
 			);
 		};
 /* End PBXProject section */
@@ -266,7 +266,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.slomr.CustomNav;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.slomr.CUINavigationController-SwiftUI";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -298,7 +298,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.slomr.CustomNav;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.slomr.CUINavigationController-SwiftUI";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -322,7 +322,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4C259AC42F33AD0300B3E57A /* Build configuration list for PBXNativeTarget "CustomNav" */ = {
+		4C259AC42F33AD0300B3E57A /* Build configuration list for PBXNativeTarget "CUINavigationController-SwiftUI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4C259AC52F33AD0300B3E57A /* Debug */,
