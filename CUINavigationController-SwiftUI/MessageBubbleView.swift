@@ -34,7 +34,5 @@ struct MessageBubbleView: View {
 // MARK: -
 
 #Preview {
-    GeometryReader { geometry in
-        MessageBubbleView(message: Message(text: "Preview message example", isMe: false), bubbleOffset: 0)
-    }
+    MessageBubbleView(message: Message(text: "Preview message example", isMe: true), bubbleOffset: -25)
 }

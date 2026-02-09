@@ -45,7 +45,7 @@ extension CUINavigationController: UINavigationControllerDelegate {
 
 // MARK: - SwiftUI Bridge
 
-struct NavigationBridge: UIViewControllerRepresentable {
+struct ContentViewBridge: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> UINavigationController {
         let listVC = MessageListHostingController()
         let navController = CUINavigationController(rootViewController: listVC)
@@ -58,5 +58,5 @@ struct NavigationBridge: UIViewControllerRepresentable {
 // MARK: -
 
 #Preview {
-    NavigationBridge()
+    ContentViewBridge()
 }

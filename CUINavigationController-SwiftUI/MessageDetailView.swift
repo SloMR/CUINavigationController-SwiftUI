@@ -147,10 +147,8 @@ extension MessageDetailHostingController: UIGestureRecognizerDelegate {
 // MARK: -
 
 #Preview {
-    NavigationStack {
-        MessageDetailView(message: Message(
+    MessageDetailView(message: Message(
             text: "This is a preview message!",
             isMe: true
-        ))
-    }
+    ))
 }

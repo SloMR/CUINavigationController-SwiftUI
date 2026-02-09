@@ -85,7 +85,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 4C259AB42F33AD0100B3E57A /* Build configuration list for PBXProject "CustomNav" */;
+			buildConfigurationList = 4C259AB42F33AD0100B3E57A /* Build configuration list for PBXProject "CUINavigationController-SwiftUI" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -313,7 +313,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4C259AB42F33AD0100B3E57A /* Build configuration list for PBXProject "CustomNav" */ = {
+		4C259AB42F33AD0100B3E57A /* Build configuration list for PBXProject "CUINavigationController-SwiftUI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4C259AC22F33AD0300B3E57A /* Debug */,
